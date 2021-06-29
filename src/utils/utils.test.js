@@ -1,4 +1,5 @@
 import { formatTime } from './formatTime';
+import { promoPrice } from './promoPrice';
 
 describe('utils', () => {
   describe('formatTime', () => {
@@ -24,5 +25,14 @@ describe('utils', () => {
       expect(formatTime(3604)).toBe('01:00:04');
     });
 
+  });
+
+  describe('promoPrice', () => {
+    it('should return price off for Hapyy Hour time', () => {
+      expect(promoPrice(200, 20)).toBe(160);
+      expect(promoPrice(51380.61, 20)).toBe(41104.488);
+      expect(promoPrice('$200', 20)).toBe('$160');
+      expect(promoPrice('$51380.61', 20)).toBe('$41,105');
+    });
   });
 });
